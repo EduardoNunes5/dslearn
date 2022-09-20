@@ -1,6 +1,8 @@
 package com.devsuperior.dslearnbds.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,6 +25,9 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Notification> notifications = new ArrayList<>();
     public User() {
     }
     public User(Long id, String name, String email, String password, Set<Role> roles) {
@@ -54,6 +59,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
     }
 
     public String getPassword() {
