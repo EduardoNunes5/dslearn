@@ -1,10 +1,7 @@
 package com.devsuperior.dslearnbds.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_user")
@@ -24,15 +21,14 @@ public class User {
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private List<Notification> notifications = new ArrayList<>();
     public User() {
     }
-    public User(Long id, String name, String email, String password, Set<Role> roles) {
+    public User(Long id, String name, String email, String password) {
         this.id = id;
-        this.roles = roles;
         this.name = name;
         this.email = email;
         this.password = password;
