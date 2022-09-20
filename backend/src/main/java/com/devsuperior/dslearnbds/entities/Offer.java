@@ -26,6 +26,9 @@ public class Offer {
     @OneToMany(mappedBy = "offer")
     private List<Resource> resources = new ArrayList<>();
 
+    @OneToMany(mappedBy = "offer")
+    private List<Topic> topics = new ArrayList<>();
+
     public Offer() {
     }
 
@@ -76,6 +79,10 @@ public class Offer {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public List<Topic> getTopics() {
+        return topics;
     }
 
     public List<Resource> getResources() {
