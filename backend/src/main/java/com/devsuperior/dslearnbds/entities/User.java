@@ -23,10 +23,8 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Set<Role> roles;
-
     public User() {
     }
-
     public User(Long id, String name, String email, String password, Set<Role> roles) {
         this.id = id;
         this.roles = roles;
@@ -34,7 +32,6 @@ public class User {
         this.email = email;
         this.password = password;
     }
-
     public Long getId() {
         return id;
     }
