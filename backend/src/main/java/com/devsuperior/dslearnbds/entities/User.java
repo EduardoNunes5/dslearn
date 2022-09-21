@@ -109,6 +109,10 @@ public class User implements UserDetails {
         return roles;
     }
 
+    public boolean hasRole(String roleName){
+        return this.getRoles().stream().anyMatch(role -> roleName.equals(role.getAuthority()));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
